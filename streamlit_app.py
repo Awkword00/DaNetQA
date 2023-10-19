@@ -11,10 +11,7 @@ import streamlit.components.v1 as components
 '''## Больше вам не придется самим искать ответ на вопрос в тонне текста. Достаточно только скопировать текст, задать вопрос, и мы дадим 100% верный ответ!'''
 
 text = st.text_area('Просто вставь текст, в котором нужно искать ответ!')
-question = st.text_area('А теперь введи свой вопрос, и я дам верный ответ!').disabled(True)
-
-if text.value != "":
-    question.disabled(False)
+question = st.text_area('А теперь введи свой вопрос, и я дам верный ответ!', disabled = not text)
 
 
 
