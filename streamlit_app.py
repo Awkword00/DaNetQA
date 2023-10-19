@@ -15,7 +15,7 @@ import streamlit.components.v1 as components
 text = st.text_area('Просто вставь текст, в котором нужно искать ответ!')
 question = st.text_input('А теперь введи свой вопрос, и я дам верный ответ!', disabled = not text)
 
-def set_answer(question, text):
+def set_answer():
     return question + " " + text
 
 st.button('Нажми на меня 3 раза', on_click=set_answer)
