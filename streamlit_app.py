@@ -16,7 +16,7 @@ text = st.text_area('Просто вставь текст, в котором н�
 question = st.text_input('А теперь введи свой вопрос, и я дам верный ответ!', disabled = not text)
 
 def set_answer():
-    st.write(set_answer(question,text))
+    st.write(question + " " + answer)
 
 st.button('Нажми на меня 3 раза', on_click=set_answer)
 
