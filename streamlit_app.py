@@ -1,6 +1,8 @@
 import time
+import random as rand
 import streamlit as st
 import streamlit.components.v1 as components
+
 
 
 # ====== Демонстрация некоторых функций Streamlit ===============
@@ -11,7 +13,19 @@ import streamlit.components.v1 as components
 '''## Больше вам не придется самим искать ответ на вопрос в тонне текста. Достаточно только скопировать текст, задать вопрос, и мы дадим 100% верный ответ!'''
 
 text = st.text_area('Просто вставь текст, в котором нужно искать ответ!')
-question = st.text_area('А теперь введи свой вопрос, и я дам верный ответ!', disabled = not text)
+question = st.text_input('А теперь введи свой вопрос, и я дам верный ответ!', disabled = not text)
+
+def set_answer(question, text):
+    return question + " " + text
+
+st.button('Нажми на меня 3 раза', on_click=set_answer)
+
+st.write(set_answer(question,text))
+
+
+
+
+
 
 
 
