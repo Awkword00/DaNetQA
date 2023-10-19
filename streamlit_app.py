@@ -7,7 +7,7 @@ import streamlit.components.v1 as components
 
 # можно записывать текст или markdown без st.write()
 
-'''## Демонстрация некоторых функций Streamlit'''
+'''## :green[Добро пожаловать в великолепное приложение DaNetQA!!!!]'''
 
 '''
 :red[Это] :orange[Markdown] :green[разноцветный] :blue[текст]
