@@ -18,7 +18,7 @@ question = st.text_input('А теперь введи свой вопрос, и �
 def set_answer():
     st.write(question + " " + text)
 
-st.button('Нажми на меня 3 раза', on_click=set_answer)
+st.button('Получи ответ!', on_click=set_answer)
 
 
 
