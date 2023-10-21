@@ -3,6 +3,46 @@ import random as rand
 import streamlit as st
 import streamlit.components.v1 as components
 import pickle
+import re
+import string
+from pymorphy2 import MorphAnalyzer
+import nltk
+from gensim.models import KeyedVectors
+from nltk.tokenize import word_tokenize
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import (accuracy_score, confusion_matrix,
+                             ConfusionMatrixDisplay, precision_score,
+                             recall_score)
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import RandomizedSearchCV
+from sklearn.neighbors import KNeighborsClassifier
+import torch
+
+def tokens_creator(text):
+    text = text.lower()
+    text = text.translate(str.maketrans('', '', string.punctuation))
+    text = re.sub("\s+", " ", text)
+    text = text.strip()
+
+    tokens = word_tokenize(text)
+
+    return tokens
+    
+def morph_transform(tokens, analyzer, model):
+    keys = []
+    for token in tokens:
+        parsed = morph.parse(token)
+        if len(parsed) == 0:
+            continue
+        nf = parsed[0].normal_form
+        pos = parsed[0].tag.POS
+        key = f"{nf}_{pos}"
+        keys.append(key)
+
+    vector = pd.Series(model.get_mean_vector(keys))
+
+    return vector
 
 def get_result_from_model(question, text):
     answer = 1
