@@ -23,10 +23,12 @@ def set_answer():
     is_button_ready = True
 
 st.button('Получи ответ!', on_click=set_answer)
-if is_button_ready:
+if is_button_ready == True:
     print("YEAH")
     st.write("## SCIENCE!!!!!!!!!!!!!!!!!")
     st.write("# " + question + " " + text)
+else:
+    st.write("# Сори, но не")
 
 
 
