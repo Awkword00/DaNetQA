@@ -18,10 +18,12 @@ text = st.text_area('Просто вставь текст, в котором н�
 question = st.text_input('А теперь введи свой вопрос, и я дам верный ответ!', disabled = not text)
 
 def set_answer():
+    print("AAAA")
     is_button_ready = True
 
 st.button('Получи ответ!', on_click=set_answer)
 if is_button_ready:
+    print("YEAH")
     st.write("# " + question + " " + text)
 
 
