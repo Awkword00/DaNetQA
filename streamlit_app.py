@@ -17,17 +17,18 @@ text = st.text_area('Просто вставь текст, в котором н�
 question = st.text_input('А теперь введи свой вопрос, и я дам верный ответ!', disabled = not text)
 
 def set_answer():
-    st.write("## YES!!!!!!!!!!!!!!!!!")
+    
+    st.write(st.session_state.answer_ready)
     print("AAAA")
     st.session_state.answer_ready = True
 
 st.button('Получи ответ!', on_click=set_answer)
 if st.session_state.answer_ready == True:
     print("YEAH")
-    st.write("## SCIENCE!!!!!!!!!!!!!!!!!")
+    st.write(st.session_state.answer_ready)
     st.write("# " + question + " " + text)
 else:
-    st.write("# Сори, но не")
+    st.write(st.session_state.answer_ready)
 
 
 
