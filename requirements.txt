@@ -3,3 +3,9 @@ pandas
 numpy
 pymorphy2
 nltk
+gensim
+transformers
+sklearn
+torch
+numpy
+pandas
