@@ -9,6 +9,8 @@ import streamlit.components.v1 as components
 
 # можно записывать текст или markdown без st.write()
 
+if 'answer_ready' not in st.session_state:
+    st.session_state.answer_ready = False
 
 '''# :green[Добро пожаловать в великолепное приложение DaNetQA!!!!]'''
 '''## Больше вам не придется самим искать ответ на вопрос в тонне текста. Достаточно только скопировать текст, задать вопрос, и мы дадим 100% верный ответ!'''
