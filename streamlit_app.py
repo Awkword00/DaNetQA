@@ -1,3 +1,4 @@
+!pip install pymorphy2
 import time
 import random as rand
 import streamlit as st
