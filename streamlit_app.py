@@ -2,6 +2,15 @@ import time
 import random as rand
 import streamlit as st
 import streamlit.components.v1 as components
+import pickle
+
+def get_result_from_model(question, text):
+    answer = 1
+    if answer == 1:
+        return "YES"
+    else:
+        return "NO"
+
 
 
 
@@ -144,3 +153,5 @@ elif st.session_state.get('detection_count', 0) > 3:
 # если нажали кнопку менее 3х раз отображаем текст Markdown
 else:
     st.write('### ***Вы нажали на кнопку менее 3 раз***')
+
+
