@@ -5,7 +5,7 @@ pymorphy2
 nltk
 gensim
 transformers
-sklearn
+scikit-learn
 torch
 numpy
 pandas
