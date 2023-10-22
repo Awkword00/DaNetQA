@@ -17,32 +17,9 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import RandomizedSearchCV
 from sklearn.neighbors import KNeighborsClassifier
+
+import model_DaNetQA
 import torch
-
-def tokens_creator(text):
-    text = text.lower()
-    text = text.translate(str.maketrans('', '', string.punctuation))
-    text = re.sub("\s+", " ", text)
-    text = text.strip()
-
-    tokens = word_tokenize(text)
-
-    return tokens
-    
-def morph_transform(tokens, analyzer, model):
-    keys = []
-    for token in tokens:
-        parsed = morph.parse(token)
-        if len(parsed) == 0:
-            continue
-        nf = parsed[0].normal_form
-        pos = parsed[0].tag.POS
-        key = f"{nf}_{pos}"
-        keys.append(key)
-
-    vector = pd.Series(model.get_mean_vector(keys))
-
-    return vector
 
 def get_result_from_model(question, text):
     answer = 1
@@ -77,7 +54,7 @@ st.button('Получи ответ!', on_click=set_answer)
 if st.session_state.answer_ready == True:
     print("YEAH")
     st.write(st.session_state.answer_ready)
-    st.write("# " + question + " " + text)
+    st.write(mode_DaNetQA.model_answer([question],[text]))
 else:
     st.write(st.session_state.answer_ready)
 
