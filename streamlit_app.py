@@ -64,7 +64,7 @@ if st.session_state.answer_ready == True:
         st.write("# Нет!")
 
 data = pd.DataFrame(columns = ["Текст","Вопрос"])
-session_state = SessionState.get(df=data
+session_state = SessionState.get(df=data)
 if st.button("Добавить новую строку"):
     session_state.df = session_state.df.append(["",""], ignore_index=True)
     st.dataframe(session_state.df)
