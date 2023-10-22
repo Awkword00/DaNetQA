@@ -71,7 +71,7 @@ if st.session_state.answer_ready == True:
 if 'df' not in st.session_state:
   st.session_state.df = pd.DataFrame(columns = ["Текст","Вопрос", "Ответ"])
 
-st.experimental_data_editor(st.session_state.df,num_rows=”dynamic”) 
+st.experimental_data_editor(st.session_state.df,num_rows="dynamic") 
 
 
 st.button('Получи ответ на множество вопросов!', on_click=set_answer_df)
