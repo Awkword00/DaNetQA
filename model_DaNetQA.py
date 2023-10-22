@@ -21,7 +21,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import RandomizedSearchCV
 from sklearn.neighbors import KNeighborsClassifier
 import torch
-
+morph = MorphAnalyzer()
 def tokens_creator(text):
     text = text.lower()
     text = text.translate(str.maketrans('', '', string.punctuation))
@@ -49,7 +49,7 @@ def morph_transform(tokens, analyzer, model):
 
 
 def model_answer(question, passage):
-  morph = MorphAnalyzer()
+  
   pretrained_model = KeyedVectors.load_word2vec_format("model.bin", binary=True)
   loaded_model = pickle.load(open("CLF model.sav", 'rb'))
   curr = pd.DataFrame(list(zip(question, passage)), columns=["question","passage"])
