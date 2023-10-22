@@ -73,7 +73,7 @@ if 'df' not in st.session_state:
 
 st.session_state.df = st.experimental_data_editor(st.session_state.df,num_rows="dynamic") 
 
-st.write(data)
+st.write(st.session_state.df)
 st.session_state.df = data
 if st.button('Получи ответ на множество вопросов!'):
   result = model_DaNetQA.model_answer(st.session_state.df["Вопрос"].tolist(), st.session_state.df["Текст"].tolist())
