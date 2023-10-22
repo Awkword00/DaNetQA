@@ -37,6 +37,7 @@ def get_result_from_model(question, text):
 
 if 'answer_ready' not in st.session_state:
     st.session_state.answer_ready = False
+
 if 'no_fields' not in st.session_state:
     st.session_state.no_fields = 2
 
@@ -49,8 +50,10 @@ question = st.text_input('А теперь введи свой вопрос, и �
 def set_answer():
   if text and question:
     st.write("## Секунду, готовлю ответ!")
+    st.session_state.answer_ready = True
   else:
     st.session_state.no_fields
+    st.session_state.answer_ready = False
 
 st.button('Получи ответ!', on_click=set_answer)
 if st.session_state.no_fields == 0:
