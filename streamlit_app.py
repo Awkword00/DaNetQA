@@ -28,7 +28,7 @@ def get_result_from_model(question, text):
     else:
         return "NO"
 
-
+# https://discuss.streamlit.io/t/adding-a-new-row-to-a-dataframe-with-each-button-click-persistent-dataframe/12799/3
 
 
 # ====== Демонстрация некоторых функций Streamlit ===============
@@ -45,16 +45,24 @@ text = st.text_area('Просто вставь текст, в котором н�
 question = st.text_input('А теперь введи свой вопрос, и я дам верный ответ!', disabled = not text)
 
 def set_answer():
+  if text and question:
     st.write(st.session_state.answer_ready)
     print("AAAA")
     st.session_state.answer_ready = True
     st.write(st.session_state.answer_ready)
+  else:
+    st.write('''## Увы, нужно ввести и текст, и вопрос! ''')
 
 st.button('Получи ответ!', on_click=set_answer)
 if st.session_state.answer_ready == True:
     print("YEAH")
     st.write(st.session_state.answer_ready)
-    st.write(model_DaNetQA.model_answer([question],[text]))
+    result = model_DaNetQA.model_answer([question],[text])
+    for i in result:
+      if i:
+        print("# Да!")
+      else:
+        st.write("# Нет!")
 else:
     st.write(st.session_state.answer_ready)
 
