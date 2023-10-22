@@ -67,11 +67,14 @@ if st.session_state.answer_ready == True:
         st.write("# Да!")
       else:
         st.write("# Нет!")
+
+st.write("## ")
+st.write("## ")
+st.write("## А если хочешь задать сразу много вопросов, можешь воспользоваться формой ниже, а далее, нужно всего нажать на одну кнопку - и готово!")
 data = st.experimental_data_editor(pd.DataFrame(columns = ["Текст","Вопрос"]),num_rows="dynamic")
 if 'df' not in st.session_state:
   st.session_state.df = data
 st.session_state.df = data
-st.write(st.session_state.df)
 if st.button('Получи ответ на множество вопросов!'):
   result = model_DaNetQA.model_answer(st.session_state.df["Вопрос"].tolist(), st.session_state.df["Текст"].tolist())
   true_res = []
@@ -81,6 +84,5 @@ if st.button('Получи ответ на множество вопросов!'
     else:
       true_res.append("Нет!")
   st.write("## Держи ответы на все твои вопросы!")
-  st.write("true_res")
   st.write(pd.DataFrame(list(zip(st.session_state.df["Вопрос"].tolist(), true_res)), columns=["Вопрос","Ответ"]))
 
