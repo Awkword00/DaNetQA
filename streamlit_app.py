@@ -51,6 +51,9 @@ def set_answer():
     st.session_state.no_fields_qa = 0
     st.session_state.answer_ready = False
 
+def set_answer_df():
+  pass
+
 st.button('Получи ответ!', on_click=set_answer)
 
 if st.session_state.no_fields_qa == 0:
@@ -66,10 +69,10 @@ if st.session_state.answer_ready == True:
         st.write("# Нет!")
 
 if 'df' not in st.session_state:
-  st.session_state.df = pd.DataFrame(columns = ["Текст","Вопрос"])
+  st.session_state.df = pd.DataFrame(columns = ["Текст","Вопрос", "Ответ"])
 
 if st.button("Добавить новую строку"):
-    st.session_state.df.append(["",""], ignore_index=True)
+    st.session_state.df.loc[len(st.session_state.df.index)] = ["", "", ""]
 
 st.dataframe(st.session_state.df) 
 
