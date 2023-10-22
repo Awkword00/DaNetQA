@@ -7,6 +7,7 @@ import re
 import string
 from pymorphy2 import MorphAnalyzer
 import nltk
+nltk.download('punkt')
 import pandas as pd
 import numpy as np
 from gensim.models import KeyedVectors
