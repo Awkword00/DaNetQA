@@ -54,7 +54,7 @@ st.button('Получи ответ!', on_click=set_answer)
 if st.session_state.answer_ready == True:
     print("YEAH")
     st.write(st.session_state.answer_ready)
-    st.write(mode_DaNetQA.model_answer([question],[text]))
+    st.write(model_DaNetQA.model_answer([question],[text]))
 else:
     st.write(st.session_state.answer_ready)
 
