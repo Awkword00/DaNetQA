@@ -56,6 +56,7 @@ if st.session_state.no_fields_qa == 0:
 
 if st.session_state.answer_ready == True:
     result = model_DaNetQA.model_answer([question],[text])
+    st.write(result)
     for i in result:
       if i:
         st.write("# Да!")
