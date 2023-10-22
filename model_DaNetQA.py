@@ -50,6 +50,7 @@ def morph_transform(tokens, analyzer, model):
 
 def model_answer(question, passage):
   morph = MorphAnalyzer()
+  pretrained_model = KeyedVectors.load_word2vec_format("model.bin", binary=True)
   loaded_model = pickle.load(open("CLF model.sav", 'rb'))
   curr = pd.DataFrame(list(zip(question, passage)), columns=["question","passage"])
   
