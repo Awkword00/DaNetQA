@@ -69,9 +69,7 @@ if st.session_state.answer_ready == True:
         st.write("# Нет!")
 
 if 'df' not in st.session_state:
-  st.session_state.df = pd.DataFrame(columns = ["Текст","Вопрос", "Ответ"])
-
-st.session_state.df = st.experimental_data_editor(st.session_state.df,num_rows="dynamic") 
+  st.session_state.df = st.experimental_data_editor(pd.DataFrame(columns = ["Текст","Вопрос"]),num_rows="dynamic") 
 
 st.write(st.session_state.df)
 if st.button('Получи ответ на множество вопросов!'):
@@ -81,8 +79,7 @@ if st.button('Получи ответ на множество вопросов!'
       result[i] = "Да"
     else:
       result[i] = "Нет"
-  st.session_state.df["Ответ"] = result
-  st.write(result)
+  st.write(pd.DataFrame(list(zip(st.session_state.df["Вопрос"], result)), columns=["Вопрос","Ответ"])
 
 
 
