@@ -7,6 +7,8 @@ import re
 import string
 from pymorphy2 import MorphAnalyzer
 import nltk
+import pandas as pd
+import numpy as np
 from gensim.models import KeyedVectors
 from nltk.tokenize import word_tokenize
 from sklearn.linear_model import LogisticRegression
