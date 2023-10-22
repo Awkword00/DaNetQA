@@ -66,12 +66,13 @@ if st.session_state.answer_ready == True:
       else:
         st.write("# Нет!")
 
-data = pd.DataFrame(columns = ["Текст","Вопрос"])
-session_state = SessionState.get(df=data)
+if df not in st.session_state:
+  st.session_state.df = pd.DataFrame(columns = ["Текст","Вопрос"])
+
 if st.button("Добавить новую строку"):
-    session_state.df = session_state.df.append(["",""], ignore_index=True)
-    st.dataframe(session_state.df)
-st.dataframe(data) 
+    st.session_state.df.append(["",""], ignore_index=True)
+
+st.dataframe(st.session_state.df) 
 
 
 st.button('Получи ответ на множество вопросов!', on_click=set_answer_df)
