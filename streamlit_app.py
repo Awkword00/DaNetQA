@@ -65,7 +65,7 @@ if st.session_state.answer_ready == True:
       else:
         st.write("# Нет!")
 
-if df not in st.session_state:
+if 'df' not in st.session_state:
   st.session_state.df = pd.DataFrame(columns = ["Текст","Вопрос"])
 
 if st.button("Добавить новую строку"):
