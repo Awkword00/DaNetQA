@@ -47,24 +47,17 @@ question = st.text_input('А теперь введи свой вопрос, и �
 def set_answer():
   if text and question:
     st.write(st.session_state.answer_ready)
-    print("AAAA")
-    st.session_state.answer_ready = True
-    st.write(st.session_state.answer_ready)
   else:
     st.write('''## Увы, нужно ввести и текст, и вопрос! ''')
 
 st.button('Получи ответ!', on_click=set_answer)
 if st.session_state.answer_ready == True:
-    print("YEAH")
-    st.write(st.session_state.answer_ready)
     result = model_DaNetQA.model_answer([question],[text])
     for i in result:
       if i:
         st.write("# Да!")
       else:
         st.write("# Нет!")
-else:
-    st.write(st.session_state.answer_ready)
 
 
 
