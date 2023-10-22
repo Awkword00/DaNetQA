@@ -48,7 +48,7 @@ question = st.text_input('А теперь введи свой вопрос, и �
 
 def set_answer():
   if text and question:
-    st.write(st.session_state.answer_ready)
+    st.write("## Секунду, готовлю ответ!")
   else:
     st.session_state.no_fields
 
