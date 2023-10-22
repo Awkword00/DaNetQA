@@ -70,7 +70,7 @@ if st.session_state.answer_ready == True:
 data = st.experimental_data_editor(pd.DataFrame(columns = ["Текст","Вопрос"]),num_rows="dynamic")
 if 'df' not in st.session_state:
   st.session_state.df = data
-
+st.session_state.df = data
 st.write(st.session_state.df)
 if st.button('Получи ответ на множество вопросов!'):
   result = model_DaNetQA.model_answer(st.session_state.df["Вопрос"].tolist(), st.session_state.df["Текст"].tolist())
@@ -80,4 +80,4 @@ if st.button('Получи ответ на множество вопросов!'
     else:
       result[i] = "Нет"
   st.write(pd.DataFrame(list(zip(st.session_state.df["Вопрос"].tolist(), result)), columns=["Вопрос","Ответ"]))
-st.session_state.df = data
+
