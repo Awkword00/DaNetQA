@@ -44,7 +44,6 @@ question = st.text_input('А теперь введи свой вопрос, и �
 
 def set_answer():
   if text and question:
-    st.write("## Секунду, готовлю ответ!")
     st.session_state.no_fields_qa = 1
     st.session_state.answer_ready = True
   else:
@@ -61,7 +60,6 @@ if st.session_state.no_fields_qa == 0:
 
 if st.session_state.answer_ready == True:
     result = model_DaNetQA.model_answer([question],[text])
-    st.write(result)
     for i in result:
       if i:
         st.write("# Да!")
