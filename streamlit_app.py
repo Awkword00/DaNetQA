@@ -74,7 +74,7 @@ if 'df' not in st.session_state:
 if st.button("Добавить новую строку"):
     st.session_state.df.loc[len(st.session_state.df.index)] = ["", "", ""]
 
-st.dataframe(st.session_state.df) 
+st.experimental_data_editor(st.session_state.df) 
 
 
 st.button('Получи ответ на множество вопросов!', on_click=set_answer_df)
