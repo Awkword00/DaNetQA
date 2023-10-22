@@ -31,9 +31,8 @@ import torch
 if 'answer_ready' not in st.session_state:
     st.session_state.answer_ready = False
 
-if 'no_fields' not in st.session_state:
-    st.write("## ???")
-    st.session_state.no_fields = 2
+if 'no_fields_qa' not in st.session_state:
+    st.session_state.no_fields_qa = 2
 
 '''# :green[Добро пожаловать в великолепное приложение DaNetQA!!!!]'''
 '''## Больше вам не придется самим искать ответ на вопрос в тонне текста. Достаточно только скопировать текст, задать вопрос, и мы дадим 100% верный ответ!'''
@@ -44,14 +43,15 @@ question = st.text_input('А теперь введи свой вопрос, и �
 def set_answer():
   if text and question:
     st.write("## Секунду, готовлю ответ!")
+    st.session_state.no_fields_qa = 1
     st.session_state.answer_ready = True
   else:
-    st.session_state.no_fields
+    st.session_state.no_fields_qa = 0
     st.session_state.answer_ready = False
 
 st.button('Получи ответ!', on_click=set_answer)
 
-if st.session_state.no_fields == 0:
+if st.session_state.no_fields_qa == 0:
   st.write("### Для получения результата нужно ввести и текст, и вопрос!")
 
 if st.session_state.answer_ready == True:
