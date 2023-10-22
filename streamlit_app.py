@@ -75,11 +75,12 @@ st.write(st.session_state.df)
 if st.button('Получи ответ на множество вопросов!'):
   result = model_DaNetQA.model_answer(st.session_state.df["Вопрос"].tolist(), st.session_state.df["Текст"].tolist())
   true_res = []
-  for i in range(len(result)):
-    if result[i]:
-      result[i] = "Да!"
+  for i in result:
+    if i:
+      true_res.append("Да!")
     else:
-      result[i] = "Нет!"
+      true_res.append("Нет!")
   st.write("## Держи ответы на все твои вопросы!")
-  st.write(pd.DataFrame(list(zip(st.session_state.df["Вопрос"].tolist(), result)), columns=["Вопрос","Ответ"]))
+  st.write("true_result")
+  st.write(pd.DataFrame(list(zip(st.session_state.df["Вопрос"].tolist(), true_result)), columns=["Вопрос","Ответ"]))
 
