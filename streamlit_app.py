@@ -79,6 +79,6 @@ if st.button('Получи ответ на множество вопросов!'
       result[i] = "Да"
     else:
       result[i] = "Нет"
-  data["Ответ"] = result
-  st.session_state.df = data
+  st.write("## Держи ответы на все твои вопросы!")
+  st.write(pd.DataFrame(list(zip(st.session_state.df["Вопрос"].tolist(), result)), columns=["Вопрос","Ответ"]))
 
